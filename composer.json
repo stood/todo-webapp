@@ -1,0 +1,17 @@
+{
+    "name": "sanpi/todo.webapp",
+    "description": "Webapp for todo.txt",
+    "keywords": ["todo.txt"],
+    "license": "MIT",
+    "require-dev": {
+        "sanpi/behatch-contexts": "*@dev",
+        "behat/mink-goutte-driver": "*",
+        "behat/mink-selenium2-driver": "*"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": { "": "src/" }
+    }
+}

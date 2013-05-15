@@ -4,12 +4,10 @@ php:
     - 5.4
 
 before_script:
-    - php -S localhost:8080 -t web/ web/index.php 2> /dev/null &
+    - php -S localhost:8080 -t web/ 2> /dev/null &
     - cp behat.yml{-dist,}
     - curl http://getcomposer.org/installer | php
     - php composer.phar install --dev --prefer-source
-    - cp src/config/development.php src/config/current.php
 
 script:
-    - ./bin/atoum
     - ./bin/behat -fprogress
