@@ -1,0 +1,12 @@
+default:
+    paths:
+        features: tests/Features
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: 'http://localhost:8080'
+            goutte: ~
+        Sanpi\Behatch\Extension:
+            contexts:
+                json:
+                    evaluation_mode: javascript
+                rest: ~
