@@ -5,8 +5,10 @@ default:
         Behat\MinkExtension\Extension:
             base_url: 'http://localhost:8080'
             goutte: ~
+            selenium2: ~
         Sanpi\Behatch\Extension:
             contexts:
                 json:
                     evaluation_mode: javascript
                 rest: ~
+                browser: ~
