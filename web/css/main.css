@@ -11,3 +11,21 @@ li.task {
     border: 1px solid rgba(0, 0, 0, 0.15);
     font-size: 2em;
 }
+
+ul.contexts, ul.projects {
+    list-style-type: none;
+    margin-left: 0;
+
+    float: right;
+    top: -5px;
+    position: relative;
+}
+
+.contexts li, .projects li {
+    display: inline;
+    margin-left: 5px;
+}
+
+.contexts li a, .projects li a {
+    padding: 5px 10px;
+}
