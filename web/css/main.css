@@ -15,7 +15,9 @@ li.task {
 ul.contexts, ul.projects {
     list-style-type: none;
     margin-left: 0;
+}
 
+#tasks ul.contexts, #tasks ul.projects {
     float: right;
     top: -5px;
     position: relative;

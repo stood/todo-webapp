@@ -5,5 +5,9 @@ angular.module('todo.txt', [])
                 templateUrl: '/partials/tasks.html',
                 controller: TasksListController
             })
+            .when('/tasks/:taskId', {
+                templateUrl: '/partials/task.html',
+                controller: TaskController
+            })
             .otherwise({redirectTo: '/tasks'});
     }])
