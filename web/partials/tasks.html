@@ -1,0 +1,11 @@
+<ul id="tasks">
+    <li id="task-{{ task.id }}" class="task" ng-repeat="task in tasks">
+        <a href="#/tasks/{{ task.id }}">{{ task.description }}</a>
+        <ul class="contexts">
+            <li ng-repeat="context in task.contexts"><a href="#" class="label label-success">@{{ context }}</a></li>
+        </ul>
+        <ul class="projects">
+            <li ng-repeat="project in task.projects"><a href="#" class="label label-info">+{{ project }}</a></li>
+        </ul>
+    </li>
+</ul>
