@@ -1,3 +1,5 @@
+'use strict';
+
 function TasksListController($scope, $http)
 {
     $http.get('/api/tasks').success(function (data) {
