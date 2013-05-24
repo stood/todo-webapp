@@ -21,3 +21,10 @@ Feature: Web interface
         And I should see "This one has a date and a context AND a project!"
         And I should see "+project"
         And I should see "@context"
+
+    @javascript
+    Scenario: Filter
+        Given I am on the homepage
+        Then I wait 1 second
+        Given fill in "search" with "+winning"
+        And I should see 1 ".task" elements
