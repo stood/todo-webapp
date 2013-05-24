@@ -1,13 +1,13 @@
 'use strict';
 
-function TasksListController($scope, $http, Tasks)
+function TasksListController($scope, Tasks)
 {
     $scope.tasks = Tasks.query();
 }
-TasksListController.$inject = ['$scope', '$http', 'Tasks'];
+TasksListController.$inject = ['$scope', 'Tasks'];
 
-function TaskController($scope, $http, $routeParams, Tasks)
+function TaskController($scope, $routeParams, Tasks)
 {
     $scope.task = Tasks.get({'taskId': $routeParams.taskId});
 }
-TaskController.$inject = ['$scope', '$http', '$routeParams', 'Tasks'];
+TaskController.$inject = ['$scope', '$routeParams', 'Tasks'];
