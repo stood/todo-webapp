@@ -1,18 +1,13 @@
 'use strict';
 
-function TasksListController($scope, $http)
+function TasksListController($scope, $http, Tasks)
 {
-    $http.get('/api/tasks').success(function (data) {
-        $scope.tasks = data.tasks;
-    });
+    $scope.tasks = Tasks.query();
 }
-TasksListController.$inject = ['$scope', '$http'];
+TasksListController.$inject = ['$scope', '$http', 'Tasks'];
 
-function TaskController($scope, $http, $routeParams)
+function TaskController($scope, $http, $routeParams, Tasks)
 {
-    var url = '/api/tasks/' + $routeParams.taskId;
-    $http.get(url).success(function (data) {
-        $scope.task = data;
-    });
+    $scope.task = Tasks.get({'taskId': $routeParams.taskId});
 }
-TaskController.$inject = ['$scope', '$http', '$routeParams'];
+TaskController.$inject = ['$scope', '$http', '$routeParams', 'Tasks'];

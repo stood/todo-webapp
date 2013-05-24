@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('todo.txt', [])
+angular.module('todo.txt', ['tasksServices'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/tasks', {
@@ -12,4 +12,4 @@ angular.module('todo.txt', [])
                 controller: TaskController
             })
             .otherwise({redirectTo: '/tasks'});
-    }])
+    }]);
