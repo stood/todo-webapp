@@ -1,0 +1,19 @@
+CACHE MANIFEST
+
+# v0.1
+
+CACHE:
+css/bootstrap.css
+css/bootstrap-responsive.css
+css/main.css
+js/angular.js
+js/angular-resource.js
+js/app.js
+js/controllers.js
+js/services.js
+partials/tasks.html
+partials/task.html
+index.html
+
+NETWORK:
+*
