@@ -11,6 +11,7 @@ js/angular-resource.min.js
 js/app.js
 js/controllers.js
 js/services.js
+js/config/current.js
 partials/tasks.html
 partials/task.html
 index.html

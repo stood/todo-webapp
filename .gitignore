@@ -4,4 +4,5 @@ cache/
 composer.lock
 composer.phar
 src/config/current.php
+web/js/config/current.js
 vendor
