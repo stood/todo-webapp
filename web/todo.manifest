@@ -3,11 +3,11 @@ CACHE MANIFEST
 # v0.1
 
 CACHE:
-css/bootstrap.css
-css/bootstrap-responsive.css
+css/bootstrap.min.css
+css/bootstrap-responsive.min.css
 css/main.css
-js/angular.js
-js/angular-resource.js
+js/angular.min.js
+js/angular-resource.min.js
 js/app.js
 js/controllers.js
 js/services.js
