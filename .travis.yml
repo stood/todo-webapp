@@ -8,12 +8,20 @@ before_script:
     - "sh -e /etc/init.d/xvfb start"
     - curl http://selenium.googlecode.com/files/selenium-server-standalone-2.32.0.jar > selenium.jar
     - java -jar selenium.jar > /dev/null &
-
-    - php -S localhost:8080 -t web/ 2> /dev/null &
-    - cp behat.yml{-dist,}
     - curl http://getcomposer.org/installer | php
-    - php composer.phar install --dev --prefer-source
+
+    - git clone git://github.com/sanpii/todo.rest.git api
+    - cd api
+    - cp src/config/{development,current}.php
+    - php ../composer.phar install --prefer-source
+    - php -S localhost:8080 -t web/ web/api 2> /dev/null &
+    - cd ..
+
+    - cp behat.yml{-dist,}
     - cp web/js/config/{development,current}.js
+    - php composer.phar install --dev --prefer-source
+    - php -S localhost:8081 -t web/ 2> /dev/null &
+
 
 script:
     - ./bin/behat -fprogress

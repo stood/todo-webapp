@@ -3,7 +3,7 @@ default:
         features: tests/Features
     extensions:
         Behat\MinkExtension\Extension:
-            base_url: 'http://localhost:8080'
+            base_url: 'http://localhost:8081'
             goutte: ~
             selenium2: ~
         Sanpi\Behatch\Extension:
