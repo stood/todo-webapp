@@ -1,6 +1,6 @@
 # todo.webapp
 
-[![Build Status](https://travis-ci.org/sanpii/todo.webapp.png)](https://travis-ci.org/sanpii/todo.webapp)
+[![Build Status](https://ci.homecomputing.fr/todo-webapp/build/status)](https://ci.homecomputing.fr/todo-webapp)
 
 Webapp for [todo.txt](http://todotxt.com/).
 
