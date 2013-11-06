@@ -7,7 +7,7 @@ app.config(['$httpProvider', function($httpProvider) {
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
 }]);
 
-app.config(['$routeProvider', function ($routeProvider) {
+app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/tasks', {
         templateUrl: 'partials/tasks.html',
         controller: TasksListController
