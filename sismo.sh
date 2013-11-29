@@ -9,7 +9,7 @@ trap 'kill ${pids[@]} 2> /dev/null' EXIT
 Xvfb :99 -screen 0 1024x768x8 2> /dev/null &
 pids+=($!)
 
-wget -q http://selenium.googlecode.com/files/selenium-server-standalone-2.31.0.jar -O selenium.jar
+wget -q http://selenium.googlecode.com/files/selenium-server-standalone-2.37.0.jar -O selenium.jar
 DISPLAY=:99.0 java -jar selenium.jar > /dev/null &
 sleep 10
 pids+=($!)
