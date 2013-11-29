@@ -1,7 +1,8 @@
 <input type="text" id="search" class="search-query form-control" placeholder="Search" ng-model="query" />
 
 <ul id="tasks">
-    <li id="task-{{ task.id }}" class="task" ng-repeat="task in tasks | filter:query">
+    <li id="task-{{ task.id }}" class="task" ng-class="{completed: task.complete}" ng-repeat="task in tasks | filter:query">
+        <input type="checkbox" name="task-{{ task.id }}-complete" ng-model="task.complete" />
         <a href="#/tasks/{{ task.id }}">{{ task.description }}</a>
         <ul class="contexts">
             <li ng-repeat="context in task.contexts"><a href="#" class="label label-success">@{{ context }}</a></li>

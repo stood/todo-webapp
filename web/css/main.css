@@ -12,6 +12,10 @@ li.task {
     font-size: 1.5em;
 }
 
+li.task.completed {
+    text-decoration: line-through;
+}
+
 ul.contexts, ul.projects {
     list-style: none outside none;
     padding-left: 0;

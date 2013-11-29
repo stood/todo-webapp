@@ -23,6 +23,12 @@ Feature: Web interface
         And I should see "@context"
 
     @javascript
+    Scenario: A completed task
+        Given I am on the homepage
+        Then I wait 1 second
+        And the checkbox "task-7-complete" should be checked
+
+    @javascript
     Scenario: Filter
         Given I am on the homepage
         Then I wait 1 second
