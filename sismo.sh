@@ -14,15 +14,28 @@ DISPLAY=:99.0 java -jar selenium.jar > /dev/null &
 sleep 10
 pids+=($!)
 
+# {{{ Install API
 if [[ ! -d api ]];
 then
     git clone git://github.com/sanpii/todo-rest.git api
-    cd api
-    ./sismo.sh
-    php -S localhost:8080 -t web/ web/app.php 2> /dev/null &
-    pids+=($!)
-    cd ..
 fi
+
+cd api
+git pull origin master
+rm -f app/todo.txt
+./sismo.sh
+echo '(A) Crack the Da Vinci Code.
+(B) +winning Win.
+@context Give it some context.
+Just a POD: Plain old task.
+(C) +project @context This one has it all!
+(C) 2012-02-03 This one has a date!
+(B) 2012-03-04 +project @context This one has a date and a context AND a project!
+x 2012-04-03 This one has no priority and a date.' > app/todo.txt
+php -S localhost:8080 -t web/ web/app.php 2> /dev/null &
+pids+=($!)
+cd ..
+# }}}
 
 wget -q http://getcomposer.org/installer -O - | php;
 ./composer.phar install --dev;
