@@ -1,4 +1,4 @@
-<input type="text" id="search" class="search-query" placeholder="Search" ng-model="query" />
+<input type="text" id="search" class="search-query form-control" placeholder="Search" ng-model="query" />
 
 <ul id="tasks">
     <li id="task-{{ task.id }}" class="task" ng-repeat="task in tasks | filter:query">

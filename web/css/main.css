@@ -1,6 +1,6 @@
 ul#tasks {
-    list-style-type: none;
-    margin-left: 0;
+    list-style: none outside none;
+    padding-left: 0;
 }
 
 li.task {
@@ -9,12 +9,12 @@ li.task {
     border-radius: 4px;
     background-color: #F5F5F5;
     border: 1px solid rgba(0, 0, 0, 0.15);
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 ul.contexts, ul.projects {
-    list-style-type: none;
-    margin-left: 0;
+    list-style: none outside none;
+    padding-left: 0;
 }
 
 #tasks ul.contexts, #tasks ul.projects {
