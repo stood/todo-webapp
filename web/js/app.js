@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('todo.txt', ['tasksServices']);
+var app = angular.module('todo.txt', ['ngRoute', 'tasksServices']);
 
 app.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
