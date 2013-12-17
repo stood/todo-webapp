@@ -16,9 +16,6 @@ var serialize = function(obj, prefix) {
 }
 
 app.config(['$httpProvider', function($httpProvider) {
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
     $httpProvider.defaults.transformRequest = function (data) {
         if (data !== undefined) {
             data = serialize(data);
