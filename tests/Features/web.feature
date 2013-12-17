@@ -34,3 +34,12 @@ Feature: Web interface
         Then I wait 1 second
         Given fill in "search" with "+winning"
         And I should see 1 ".task" elements
+
+    @javascript
+    Scenario: Complete a task
+        Given I am on the homepage
+        And I wait 1 second
+        When I check "task-6-complete"
+        And I am on the homepage
+        And I wait 1 second
+        Then the checkbox "task-6-complete" should be checked
