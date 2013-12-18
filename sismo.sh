@@ -14,6 +14,8 @@ DISPLAY=:99.0 java -jar selenium.jar > /dev/null &
 sleep 10
 pids+=($!)
 
+wget -q http://getcomposer.org/installer -O - | php;
+
 # {{{ Install API
 if [[ ! -d api ]];
 then
@@ -22,8 +24,8 @@ fi
 
 cd api
 git pull origin master
-rm -f app/todo.txt
-./sismo.sh
+cp app/config/parameters.yml{.dist,}
+../composer.phar install
 echo '(A) Crack the Da Vinci Code.
 (B) +winning Win.
 @context Give it some context.
@@ -37,7 +39,6 @@ pids+=($!)
 cd ..
 # }}}
 
-wget -q http://getcomposer.org/installer -O - | php;
 ./composer.phar install --dev;
 cp behat.yml{-dist,}
 cp web/js/config/{development,current}.js

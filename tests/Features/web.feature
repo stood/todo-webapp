@@ -40,6 +40,7 @@ Feature: Web interface
         Given I am on the homepage
         And I wait 1 second
         When I check "task-6-complete"
+        And I wait 4 second
         And I am on the homepage
         And I wait 1 second
         Then the checkbox "task-6-complete" should be checked
