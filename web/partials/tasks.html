@@ -1,4 +1,9 @@
-<input type="text" id="search" class="search-query form-control" placeholder="Search" ng-model="query" />
+<div class="input-group">
+    <input type="text" id="search" class="search-query form-control" placeholder="Search" ng-model="query" />
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" title="Clear" ng-click="query = ''">&times;</button>
+    </span>
+</div>
 
 <ul id="tasks">
     <li id="task-{{ task.id }}" class="task" ng-class="{completed: task.complete}" ng-repeat="task in tasks | filter:query">
