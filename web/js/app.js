@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('todo.txt', ['ngRoute', 'tasksServices']);
+var app = angular.module('todo.txt', ['ngRoute', 'tasksServices', 'xeditable']);
 
 var serialize = function(obj, prefix) {
     var str = [];
@@ -34,3 +34,7 @@ app.config(['$routeProvider', function($routeProvider) {
     });
     $routeProvider.otherwise({redirectTo: '/tasks'});
 }]);
+
+app.run(function(editableOptions) {
+  editableOptions.theme = 'bs3';
+});

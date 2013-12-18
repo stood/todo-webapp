@@ -35,3 +35,9 @@ ul.contexts, ul.projects {
 .contexts li a, .projects li a {
     padding: 5px 10px;
 }
+
+.task .editable-text,
+.task .editable-controls,
+.task .editable-input {
+    width: 95%;
+}

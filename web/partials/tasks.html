@@ -3,12 +3,14 @@
 <ul id="tasks">
     <li id="task-{{ task.id }}" class="task" ng-class="{completed: task.complete}" ng-repeat="task in tasks | filter:query">
         <input type="checkbox" name="task-{{ task.id }}-complete" ng-change="update(task);" ng-model="task.complete" />
-        {{ task.description }}
-        <ul class="contexts">
-            <li ng-repeat="context in task.contexts"><a href="#" class="label label-success">@{{ context }}</a></li>
-        </ul>
-        <ul class="projects">
-            <li ng-repeat="project in task.projects"><a href="#" class="label label-info">+{{ project }}</a></li>
-        </ul>
+        <span editable-text="task.raw" onaftersave="save(task)">
+            {{ task.description }}
+            <ul class="contexts">
+                <li ng-repeat="context in task.contexts"><a href="#" class="label label-success">@{{ context }}</a></li>
+            </ul>
+            <ul class="projects">
+                <li ng-repeat="project in task.projects"><a href="#" class="label label-info">+{{ project }}</a></li>
+            </ul>
+        </span>
     </li>
 </ul>

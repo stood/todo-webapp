@@ -6,7 +6,8 @@ angular.module('tasksServices', ['ngResource', 'config'])
             'http://:api_end_point/tasks/:taskId',
             {api_end_point: API_END_POINT, taskId: '@taskId'},
             {
-                'update': { method: 'PATCH' }
+                'update': { method: 'PATCH' },
+                'save': { method: 'PUT' }
             }
         );
     });
