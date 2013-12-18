@@ -15,14 +15,6 @@ Feature: Web interface
         And I should see "@context" in the "#task-6" element
 
     @javascript
-    Scenario: A task
-        When I am on "/#tasks/6"
-        And I wait 1 second
-        Then I should see "This one has a date and a context AND a project!"
-        And I should see "+project"
-        And I should see "@context"
-
-    @javascript
     Scenario: A completed task
         When I am on the homepage
         And I wait 1 second
@@ -41,6 +33,6 @@ Feature: Web interface
         And I wait 1 second
         When I check "task-6-complete"
         And I wait 4 second
-        And I am on the homepage
+        And I reload the page
         And I wait 1 second
         Then the checkbox "task-6-complete" should be checked

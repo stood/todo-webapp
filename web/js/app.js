@@ -32,9 +32,5 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'partials/tasks.html',
         controller: TasksListController
     });
-    $routeProvider.when('/tasks/:taskId', {
-        templateUrl: 'partials/task.html',
-        controller: TaskController
-    });
     $routeProvider.otherwise({redirectTo: '/tasks'});
 }]);

@@ -9,9 +9,3 @@ function TasksListController($scope, Tasks)
     };
 }
 TasksListController.$inject = ['$scope', 'Tasks'];
-
-function TaskController($scope, $routeParams, Tasks)
-{
-    $scope.task = Tasks.get({'taskId': $routeParams.taskId});
-}
-TaskController.$inject = ['$scope', '$routeParams', 'Tasks'];

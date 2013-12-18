@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-# v0.3
+# v0.4
 
 CACHE:
 css/bootstrap.min.css
@@ -19,7 +19,6 @@ js/install.js
 js/services.js
 js/config/current.js
 partials/tasks.html
-partials/task.html
 index.html
 todo.webapp
 
