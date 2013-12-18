@@ -41,3 +41,8 @@ ul.contexts, ul.projects {
 .task .editable-input {
     width: 95%;
 }
+
+.task .editable-text ~ .contexts,
+.task .editable-text ~ .projects {
+    display: none;
+}

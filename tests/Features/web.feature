@@ -36,3 +36,11 @@ Feature: Web interface
         And I reload the page
         And I wait 1 second
         Then the checkbox "task-6-complete" should be checked
+
+    @javascript
+    Scenario: Rapid filter
+        Given I am on the homepage
+        And I wait 1 second
+        When I click on the 1st ".projects a" element
+        Then I should see "+winning" in the "#search" element
+        And I should see 1 ".task" elements
