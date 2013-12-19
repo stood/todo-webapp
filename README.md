@@ -10,7 +10,7 @@ Webapp for [todo.txt](http://todotxt.com/).
 
 Before, you need the [REST API](https://github.com/sanpii/todo.rest).
 
-    $ git clone git@github.com:sanpii/todo.webapp.git
+    $ git clone https://github.com/sanpii/todo-webapp.git
     $ cd todo.webapp
     $ php composer.phar install
 
