@@ -28,7 +28,7 @@ li.task.priority-D {
     background-color: rgb(223, 240, 216);
 }
 
-li.task.completed {
+li.task.completed .description {
     text-decoration: line-through;
 }
 
