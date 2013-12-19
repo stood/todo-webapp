@@ -2,7 +2,9 @@
 
 function TasksListController($scope, Tasks, Alerts)
 {
-    $scope.tasks = Tasks.query();
+    $scope.refresh = function () {
+        $scope.tasks = Tasks.query();
+    };
 
     $scope.save = function (raw) {
         Tasks.save({ raw: raw }, function (data) {
@@ -41,5 +43,7 @@ function TasksListController($scope, Tasks, Alerts)
     $scope.closeAlert = function (index) {
         Alerts.close(index);
     }
+
+    $scope.refresh();
 }
 TasksListController.$inject = ['$scope', 'Tasks', 'Alerts'];
