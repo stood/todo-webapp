@@ -10,4 +10,19 @@ angular.module('tasksServices', ['ngResource', 'config'])
                 'save': { method: 'PUT' }
             }
         );
+    })
+    .factory('Alerts', function() {
+        var alerts = [];
+
+        return {
+            all: function() {
+                return alerts;
+            },
+            add: function(type, message) {
+                alerts.push({ type: type, message: message });
+            },
+            close: function(index) {
+                alerts.splice(index, 1);
+            }
+        }
     });

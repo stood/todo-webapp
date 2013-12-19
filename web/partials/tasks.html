@@ -1,3 +1,10 @@
+<div>
+    <div ng-repeat="alert in alerts" class="alert alert-{{ alert.type }} alert-dismissable" ng-click="closeAlert($index)">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ alert.message }}
+    </div>
+</div>
+
 <div class="input-group">
     <input type="text" id="search" class="search-query form-control" placeholder="Search" ng-model="query" />
     <span class="input-group-btn">
