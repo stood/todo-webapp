@@ -12,6 +12,22 @@ li.task {
     font-size: 1.5em;
 }
 
+li.task.priority-A {
+    background-color: rgb(242, 222, 222);
+}
+
+li.task.priority-B {
+    background-color: rgb(252, 248, 227);
+}
+
+li.task.priority-C {
+    background-color: rgb(217, 237, 247);
+}
+
+li.task.priority-D {
+    background-color: rgb(223, 240, 216);
+}
+
 li.task.completed {
     text-decoration: line-through;
 }

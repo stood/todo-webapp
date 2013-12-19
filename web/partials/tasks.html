@@ -20,7 +20,12 @@
 </div>
 
 <ul id="tasks">
-    <li id="task-{{ task.id }}" class="task" ng-class="{completed: task.complete}" ng-repeat="task in tasks | filter:query">
+    <li
+        id="task-{{ task.id }}"
+        class="task priority-{{ task.priority || 'none' }}"
+        ng-class="{completed: task.complete }"
+        ng-repeat="task in tasks | filter:query"
+    >
         <input type="checkbox" name="task-{{ task.id }}-complete" ng-change="update(task);" ng-model="task.complete" />
         <span editable-text="task.raw" onaftersave="save(task)">
             {{ task.description }}
