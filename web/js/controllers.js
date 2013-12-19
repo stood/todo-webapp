@@ -4,8 +4,8 @@ function TasksListController($scope, Tasks, Alerts)
 {
     $scope.tasks = Tasks.query();
 
-    $scope.create = function (raw) {
-        Tasks.create({ raw: raw }, function (data) {
+    $scope.save = function (raw) {
+        Tasks.save({ raw: raw }, function (data) {
             $scope.tasks[data.id] = Tasks.get({'taskId': data.id});
             Alerts.add('success', data.message);
         }, function (response) {
@@ -31,8 +31,8 @@ function TasksListController($scope, Tasks, Alerts)
         });
     };
 
-    $scope.save = function (task) {
-        Tasks.save({'taskId': task.id}, task, function (data) {
+    $scope.update = function (task) {
+        Tasks.update({'taskId': task.id}, task, function (data) {
             $scope.tasks[data.id] = Tasks.get({'taskId': data.id});
             Alerts.add('success', 'Task #' + data.id + ' updated.');
         }, function (response) {
