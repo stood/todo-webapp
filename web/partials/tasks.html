@@ -23,15 +23,16 @@
     <li
         id="task-{{ task.id }}"
         class="task priority-{{ task.priority || 'none' }}"
-        ng-class="{completed: task.complete }"
+        ng-class="{completed: task.complete}"
         ng-repeat="task in tasks | filter:query"
-        ng-click="hidden=!hidden"
         ng-init="hidden=true"
     >
         <input type="checkbox" name="task-{{ task.id }}-complete" ng-change="task.complete ? complete(task) : uncomplete(task);" ng-model="task.complete" />
         <span class="description" editable-text="task.raw" onaftersave="update(task)">
             {{ task.description }}
         </span>
+
+        <button ng-click="hidden=!hidden" title="Show detail" class="show-detail btn btn-default glyphicon glyphicon-chevron-{{ hidden ? 'down' : 'up'}}"></button>
 
         <ul class="contexts">
             <li ng-repeat="context in task.contexts"><a href ng-click="$parent.$parent.query = '@' + context" class="label label-success">@{{ context }}</a></li>

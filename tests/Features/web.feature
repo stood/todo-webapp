@@ -41,3 +41,9 @@ Feature: Web interface
         And I press "create"
         Then I should see text matching "Task \d+ created"
         And I should see "New task" in the "#tasks" element
+
+    @javascript
+    Scenario: Display task detail
+        When I click on the 8th ".show-detail" element
+        Then I should see "Completed"
+        And I should see "2012-04-03"

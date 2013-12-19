@@ -38,12 +38,15 @@ ul.contexts, ul.projects {
 }
 
 #tasks ul.contexts, #tasks ul.projects {
-    float: right;
     top: -5px;
     position: relative;
 }
 
-.contexts li, .projects li {
+#tasks ul.contexts, #tasks ul.projects, .show-detail {
+    float: right;
+}
+
+.contexts li, .projects li, .show-detail {
     display: inline;
     margin-left: 5px;
 }
@@ -59,6 +62,7 @@ ul.contexts, ul.projects {
 }
 
 .task .editable-text ~ .contexts,
-.task .editable-text ~ .projects {
+.task .editable-text ~ .projects,
+.task .editable-text ~ .show-detail {
     display: none;
 }
