@@ -4,6 +4,8 @@
 
 Webapp for [todo.txt](http://todotxt.com/).
 
+![Screenshot](screenshot.png)
+
 ## Installation
 
 Before, you need the [REST API](https://github.com/sanpii/todo.rest).
