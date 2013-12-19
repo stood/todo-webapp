@@ -8,7 +8,9 @@ angular.module('tasksServices', ['ngResource', 'config'])
             {
                 'create': { method: 'POST' },
                 'update': { method: 'PATCH' },
-                'save': { method: 'PUT' }
+                'save': { method: 'PUT' },
+                'complete': { method: 'POST', url: 'http://:api_end_point/tasks/:taskId/complete' },
+                'uncomplete': { method: 'POST', url: 'http://:api_end_point/tasks/:taskId/uncomplete' }
             }
         );
     })

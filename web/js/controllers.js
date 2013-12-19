@@ -13,11 +13,21 @@ function TasksListController($scope, Tasks, Alerts)
         });
     };
 
-    $scope.update = function (task) {
-        Tasks.update({'taskId': task.id}, task, function (data) {
-            Alerts.add('success', 'Task #' + data.id + ' updated.');
+    $scope.complete = function (task) {
+        Tasks.complete({'taskId': task.id}, task, function (data) {
+            $scope.tasks[data.id] = Tasks.get({'taskId': data.id});
+            Alerts.add('success', 'Task #' + data.id + ' completed.');
         }, function (response) {
-            Alerts.add('danger', 'Task #' + response.config.data.id + ' couldn’t be update.');
+            Alerts.add('danger', 'Task #' + response.config.data.id + ' couldn’t be complete.');
+        });
+    };
+
+    $scope.uncomplete = function (task) {
+        Tasks.uncomplete({'taskId': task.id}, task, function (data) {
+            $scope.tasks[data.id] = Tasks.get({'taskId': data.id});
+            Alerts.add('success', 'Task #' + data.id + ' uncompleted.');
+        }, function (response) {
+            Alerts.add('danger', 'Task #' + response.config.data.id + ' couldn’t be uncomplete.');
         });
     };
 
