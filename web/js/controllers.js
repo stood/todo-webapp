@@ -13,31 +13,27 @@ function TasksListController($scope, Tasks, Alerts)
         });
     };
 
-    $scope.complete = function (task) {
-        Tasks.complete({'taskId': task.id}, task, function (data) {
-            $scope.tasks[data.id] = Tasks.get({'taskId': data.id});
-            Alerts.add('success', 'Task #' + data.id + ' completed.');
+    $scope.do = function (action, task) {
+        var f = eval('Tasks.' + action);
+
+        f({'taskId': task.id}, task, function (data) {
+            $scope.tasks[data.id] = Tasks.get({'taskId': task.id});
+            Alerts.add('success', data.message);
         }, function (response) {
-            Alerts.add('danger', 'Task #' + response.config.data.id + ' couldn’t be complete.');
+            Alerts.add('danger', 'Task ' + task.id + ' couldn’t be update');
         });
+    };
+
+    $scope.complete = function (task) {
+        $scope.do('complete', task);
     };
 
     $scope.uncomplete = function (task) {
-        Tasks.uncomplete({'taskId': task.id}, task, function (data) {
-            $scope.tasks[data.id] = Tasks.get({'taskId': data.id});
-            Alerts.add('success', 'Task #' + data.id + ' uncompleted.');
-        }, function (response) {
-            Alerts.add('danger', 'Task #' + response.config.data.id + ' couldn’t be uncomplete.');
-        });
+        $scope.do('uncomplete', task);
     };
 
     $scope.update = function (task) {
-        Tasks.update({'taskId': task.id}, task, function (data) {
-            $scope.tasks[data.id] = Tasks.get({'taskId': data.id});
-            Alerts.add('success', 'Task #' + data.id + ' updated.');
-        }, function (response) {
-            Alerts.add('danger', 'Task #' + response.config.data.id + ' couldn’t be update.');
-        });
+        $scope.do('update', task);
     };
 
     $scope.alerts = Alerts.all();

@@ -25,10 +25,9 @@ Feature: Web interface
     @javascript
     Scenario: Complete a task
         When I check "task-6-complete"
-        And I wait 4 second
         And I reload the page
-        And I wait 1 second
         Then the checkbox "task-6-complete" should be checked
+        And I should see text matching "Task \d+ updated"
 
     @javascript
     Scenario: Rapid filter
