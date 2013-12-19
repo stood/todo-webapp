@@ -4,6 +4,15 @@ function TasksListController($scope, Tasks, Alerts)
 {
     $scope.tasks = Tasks.query();
 
+    $scope.create = function (raw) {
+        Tasks.create({ raw: raw }, function (data) {
+            $scope.tasks[data.id] = Tasks.get({'taskId': data.id});
+            Alerts.add('success', data.message);
+        }, function (response) {
+            Alerts.add('danger', 'Couldn’t create task');
+        });
+    };
+
     $scope.update = function (task) {
         Tasks.update({'taskId': task.id}, task, function (data) {
             Alerts.add('success', 'Task #' + data.id + ' updated.');

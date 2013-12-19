@@ -44,3 +44,12 @@ Feature: Web interface
         When I click on the 1st ".projects a" element
         Then I should see "+winning" in the "#search" element
         And I should see 1 ".task" elements
+
+    @javascript
+    Scenario: Create a task
+        Given I am on the homepage
+        And I wait 1 second
+        When I fill in "search" with "New task"
+        And I press "create"
+        Then I should see text matching "Task \d+ created"
+        And I should see "New task" in the "#tasks" element
