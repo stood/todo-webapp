@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-# v0.5
+# v0.6
 
 CACHE:
 css/bootstrap.min.css
@@ -11,10 +11,12 @@ fonts/glyphicons-halflings-regular.svg
 fonts/glyphicons-halflings-regular.ttf
 fonts/glyphicons-halflings-regular.woff
 img/favicon.png
-js/angular.min.js
-js/angular-route.min.js
-js/angular-resource.min.js
+js/lib/angular.min.js
+js/lib/angular-route.min.js
+js/lib/angular-resource.min.js
+js/lib/require.min.js
 js/lib/xeditable.min.js
+js/main.js
 js/app.js
 js/controllers.js
 js/install.js
