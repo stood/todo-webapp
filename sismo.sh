@@ -40,6 +40,7 @@ cd ..
 # }}}
 
 ./composer.phar install --dev;
+bower install
 cp behat.yml{-dist,}
 cp web/js/config/{development,current}.js
 

@@ -3,10 +3,10 @@
 requirejs.config({
     baseUrl: 'js',
     paths: {
-        angular: 'lib/angular.min',
-        angularRoute: 'lib/angular-route.min',
-        angularResource: 'lib/angular-resource.min',
-        xeditable: 'lib/xeditable.min',
+        angular: 'lib/angular/angular.min',
+        angularRoute: 'lib/angular-route/angular-route.min',
+        angularResource: 'lib/angular-resource/angular-resource.min',
+        xeditable: 'lib/angular-xeditable/dist/js/xeditable.min',
         config: 'config/current'
     },
     shim: {

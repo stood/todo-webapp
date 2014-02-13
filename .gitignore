@@ -2,5 +2,6 @@
 /bin/*
 /composer.lock
 /composer.phar
-/web/js/config/current.js
 /vendor
+/web/js/config/current.js
+/web/js/lib
