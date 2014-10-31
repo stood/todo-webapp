@@ -12,6 +12,7 @@ fonts/glyphicons-halflings-regular.ttf
 fonts/glyphicons-halflings-regular.woff
 img/favicon.png
 js/lib/angular/angular.min.js
+js/lib/angular/angular-csp.js
 js/lib/angular/angular-route.min.js
 js/lib/angular/angular-resource.min.js
 js/lib/xeditable.min.js
