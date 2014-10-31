@@ -41,7 +41,7 @@
             <li ng-repeat="project in task.projects"><a href ng-click="$parent.$parent.query = '+' + project" class="label label-info">+{{ project }}</a></li>
         </ul>
 
-        <dl class="detail dl-horizontal" ng-class="{hidden: hidden}" id="task-{{ task.id }}-detail">
+        <dl class="detail dl-horizontal" ng-hide="hidden" id="task-{{ task.id }}-detail">
             <hr />
             <dt class="created">Created</dt><dd>{{ task.created || '-' }}</dd>
             <dt class="completed">Completed</dt><dd>{{ task.completed || '-' }}</dd>
