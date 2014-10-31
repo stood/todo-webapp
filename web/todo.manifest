@@ -1,30 +1,29 @@
 CACHE MANIFEST
 
-# v0.7
+# v0.8
 
 CACHE:
 css/bootstrap.min.css
 css/main.css
-css/xeditable.css
 fonts/glyphicons-halflings-regular.eot
 fonts/glyphicons-halflings-regular.svg
 fonts/glyphicons-halflings-regular.ttf
 fonts/glyphicons-halflings-regular.woff
 img/favicon.png
-js/lib/angular/angular.min.js
-js/lib/angular/angular-csp.js
-js/lib/angular/angular-route.min.js
-js/lib/angular/angular-resource.min.js
-js/lib/xeditable.min.js
-js/main.js
-js/app.js
-js/controllers.js
-js/install.js
-js/services.js
-js/config/current.js
-partials/tasks.html
 index.html
-todo.webapp
+js/app.js
+js/config/current.js
+js/controllers.js
+js/lib/angular/angular-csp.css
+js/lib/angular/angular.min.js
+js/lib/angular-http-auth/src/http-auth-interceptor.js
+js/lib/angular-resource/angular-resource.min.js
+js/lib/angular-route/angular-route.min.js
+js/lib/angular-xeditable/dist/css/xeditable.css
+js/lib/angular-xeditable/dist/js/xeditable.min.js
+js/services.js
+manifest.webapp
+partials/tasks.html
 
 NETWORK:
 *
