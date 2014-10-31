@@ -5,7 +5,16 @@
     </div>
 </div>
 
-<div class="input-group input-group-lg">
+<div id="login" class="input-group input-group-lg" ng-show="login">
+    <input type="text" ng-model="username" class="form-control" />
+    <input type="password" ng-model="password" class="form-control" />
+
+    <button class="btn btn-primary" name="login" ng-click="submit(username, password)">
+        Login
+    </button>
+</div>
+
+<div class="input-group input-group-lg" ng-hide="login">
     <span class="input-group-btn">
         <button class="btn btn-primary" name="create" title="New task" ng-click="save(query)">
             <span class="glyphicon glyphicon-plus"></span>
@@ -19,7 +28,7 @@
     </span>
 </div>
 
-<ul id="tasks">
+<ul id="tasks" ng-hide="login">
     <li
         id="task-{{ task.id }}"
         class="task priority-{{ task.priority || 'none' }}"

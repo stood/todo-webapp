@@ -18,6 +18,9 @@
                 </div>
 
                 <div class="navbar-form navbar-right">
+                    <a class="btn btn-default" id="logout" title="logout" href="#" ng-click="logout()" ng-show="logged">
+                        <span class="glyphicon glyphicon-log-out"></span>
+                    </a>
                     <a class="btn btn-default" id="refresh" title="Refresh tasks" href="#" ng-click="refresh()">
                         <span class="glyphicon glyphicon-refresh"></span>
                     </a>
@@ -31,6 +34,7 @@
         <script src="js/lib/angular-route/angular-route.min.js"></script>
         <script src="js/lib/angular-resource/angular-resource.min.js"></script>
         <script src="js/lib/angular-xeditable/dist/js/xeditable.min.js"></script>
+        <script src="js/lib/angular-http-auth/src/http-auth-interceptor.js"></script>
         <script src="js/config/current.js"></script>
         <script src="js/services.js"></script>
         <script src="js/controllers.js"></script>

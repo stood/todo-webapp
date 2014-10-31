@@ -1,7 +1,28 @@
 'use strict';
 
-function TasksListController($scope, Tasks, Alerts)
+function TasksListController($scope, Tasks, Alerts, authService, $http)
 {
+    $scope.login = false;
+    $scope.logged = false;
+
+    $scope.$on('event:auth-loginRequired', function() {
+        $scope.login = true;
+    });
+
+    $scope.submit = function (username, password) {
+        var credential = btoa(username + ':' + password);
+        $http.defaults.headers.common.Authorization = 'Basic ' + credential;
+        $scope.login = false;
+        $scope.logged = true;
+        authService.loginConfirmed();
+    };
+
+    $scope.logout = function () {
+        $http.defaults.headers.common.Authorization = '';
+        $scope.logged = false;
+        $scope.refresh();
+    }
+
     $scope.refresh = function () {
         $scope.tasks = Tasks.query();
     };
@@ -46,4 +67,4 @@ function TasksListController($scope, Tasks, Alerts)
 
     $scope.refresh();
 }
-TasksListController.$inject = ['$scope', 'Tasks', 'Alerts'];
+TasksListController.$inject = ['$scope', 'Tasks', 'Alerts', 'authService', '$http'];
