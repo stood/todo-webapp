@@ -1,17 +1,10 @@
 'use strict';
 
-angular.module('tasksServices', ['ngResource', 'config'])
-    .factory('Tasks', function ($resource, API_END_POINT) {
-        return $resource(
-            '//:api_end_point/tasks/:taskId',
-            {api_end_point: API_END_POINT, taskId: '@taskId'},
-            {
-                'save': { method: 'POST' },
-                'update': { method: 'PUT' },
-                'complete': { method: 'POST', url: '//:api_end_point/tasks/:taskId/complete' },
-                'uncomplete': { method: 'POST', url: '//:api_end_point/tasks/:taskId/uncomplete' }
-            }
-        );
+angular.module('tasksServices', ['ngResource'])
+    .service('config', function () {
+        this.server = null;
+        this.username = null;
+        this.password = null;
     })
     .factory('Alerts', function() {
         var alerts = [];

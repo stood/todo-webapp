@@ -1,34 +1,58 @@
 'use strict';
 
-function TasksListController($scope, Tasks, Alerts, authService, $http)
+function LoginController($scope, $location, config)
 {
-    $scope.login = false;
-    $scope.logged = false;
+    $scope.submit = function () {
+        config.server = $scope.server;
+        config.username = $scope.username;
+        config.password = $scope.password;
 
-    $scope.$on('event:auth-loginRequired', function() {
-        $scope.login = true;
-    });
-
-    $scope.submit = function (username, password) {
-        var credential = btoa(username + ':' + password);
-        $http.defaults.headers.common.Authorization = 'Basic ' + credential;
-        $scope.login = false;
-        $scope.logged = true;
-        authService.loginConfirmed();
+        $location.path('/tasks');
     };
 
     $scope.logout = function () {
         $http.defaults.headers.common.Authorization = '';
-        $scope.logged = false;
-        $scope.refresh();
+        $scope.tasks = null;
+
+        config.username = null;
+        config.password = null;
+        config.server = null;
     }
+}
+LoginController.$inject = ['$scope', '$location', 'config'];
+
+function TasksListController($scope, Alerts, authService, $http, $location, config, $resource)
+{
+    if (config.server === null) {
+        $location.path('/login');
+    }
+    else {
+        var credential = btoa(config.username + ':' + config.password);
+        $http.defaults.headers.common.Authorization = 'Basic ' + credential;
+        authService.loginConfirmed();
+
+        var Tasks = $resource(
+            config.server + '/tasks/:taskId',
+            {taskId: '@taskId'},
+            {
+                'save': { method: 'POST' },
+                'update': { method: 'PUT' },
+                'complete': { method: 'POST', url: config.server + '/tasks/:taskId/complete' },
+                'uncomplete': { method: 'POST', url: config.server + '/tasks/:taskId/uncomplete' }
+            }
+        );
+    }
+
+    $scope.$on('event:auth-loginRequired', function() {
+        $location.path('/login');
+    });
 
     $scope.refresh = function () {
         $scope.tasks = Tasks.query();
     };
 
     $scope.save = function (raw) {
-        Tasks.save({ raw: raw }, function (data) {
+        Tasks.save({'raw': raw}, function (data) {
             $scope.tasks[data.id] = Tasks.get({'taskId': data.id});
             Alerts.add('success', data.message);
         }, function (response) {
@@ -67,4 +91,4 @@ function TasksListController($scope, Tasks, Alerts, authService, $http)
 
     $scope.refresh();
 }
-TasksListController.$inject = ['$scope', 'Tasks', 'Alerts', 'authService', '$http'];
+TasksListController.$inject = ['$scope', 'Alerts', 'authService', '$http', '$location', 'config', '$resource'];

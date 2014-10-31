@@ -28,10 +28,16 @@ app.config(['$httpProvider', function($httpProvider) {
 }]);
 
 app.config(['$routeProvider', function($routeProvider) {
+    $routeProvider.when('/login', {
+        templateUrl: 'partials/login.html',
+        controller: LoginController
+    });
+
     $routeProvider.when('/tasks', {
         templateUrl: 'partials/tasks.html',
         controller: TasksListController
     });
+
     $routeProvider.otherwise({redirectTo: '/tasks'});
 }]);
 

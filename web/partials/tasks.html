@@ -1,59 +1,69 @@
-<div>
-    <div ng-repeat="alert in alerts" class="alert alert-{{ alert.type }} alert-dismissable" ng-click="closeAlert($index)">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        {{ alert.message }}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Todo.php</a>
+        </div>
+
+        <div class="navbar-form navbar-right">
+            <button class="btn btn-default" id="logout" title="logout" ng-click="logout()">
+                <span class="glyphicon glyphicon-log-out"></span>
+            </button>
+            <button class="btn btn-default" id="refresh" title="Refresh tasks" ng-click="refresh()">
+                <span class="glyphicon glyphicon-refresh"></span>
+            </button>
+        </div>
     </div>
 </div>
 
-<div id="login" class="input-group input-group-lg" ng-show="login">
-    <input type="text" ng-model="username" class="form-control" />
-    <input type="password" ng-model="password" class="form-control" />
-
-    <button class="btn btn-primary" name="login" ng-click="submit(username, password)">
-        Login
-    </button>
-</div>
-
-<div class="input-group input-group-lg" ng-hide="login">
-    <span class="input-group-btn">
-        <button class="btn btn-primary" name="create" title="New task" ng-click="save(query)">
-            <span class="glyphicon glyphicon-plus"></span>
-        </button>
-    </span>
-    <input type="text" id="search" class="search-query form-control" placeholder="Search or add" ng-model="query" />
-    <span class="input-group-btn">
-        <button class="btn btn-default" title="Clear search" ng-click="query = ''">
-            <span class="glyphicon glyphicon-remove"></span>
-        </button>
-    </span>
-</div>
-
-<ul id="tasks" ng-hide="login">
-    <li
-        id="task-{{ task.id }}"
-        class="task priority-{{ task.priority || 'none' }}"
-        ng-class="{completed: task.complete}"
-        ng-repeat="task in tasks | filter:query"
-        ng-init="hidden=true"
-    >
-        <input type="checkbox" name="task-{{ task.id }}-complete" ng-change="task.complete ? complete(task) : uncomplete(task);" ng-model="task.complete" />
-        <span class="description" editable-text="task.raw" onaftersave="update(task)">
-            {{ task.description }}
-        </span>
-
-        <button ng-click="hidden=!hidden" title="Show detail" class="show-detail btn btn-default glyphicon glyphicon-chevron-{{ hidden ? 'down' : 'up'}}"></button>
-
-        <ul class="contexts">
-            <li ng-repeat="context in task.contexts"><a href ng-click="$parent.$parent.query = '@' + context" class="label label-success">@{{ context }}</a></li>
-        </ul>
-        <ul class="projects">
-            <li ng-repeat="project in task.projects"><a href ng-click="$parent.$parent.query = '+' + project" class="label label-info">+{{ project }}</a></li>
-        </ul>
-
-        <dl class="detail dl-horizontal" ng-hide="hidden" id="task-{{ task.id }}-detail">
-            <hr />
-            <dt class="created">Created</dt><dd>{{ task.created || '-' }}</dd>
-            <dt class="completed">Completed</dt><dd>{{ task.completed || '-' }}</dd>
+<div class="container">
+    <div>
+        <div ng-repeat="alert in alerts" class="alert alert-{{ alert.type }} alert-dismissable" ng-click="closeAlert($index)">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ alert.message }}
         </div>
-    </li>
-</ul>
+    </div>
+
+    <div class="input-group input-group-lg">
+        <span class="input-group-btn">
+            <button class="btn btn-primary" name="create" title="New task" ng-click="save(query)">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </span>
+        <input type="text" id="search" class="search-query form-control" placeholder="Search or add" ng-model="query" />
+        <span class="input-group-btn">
+            <button class="btn btn-default" title="Clear search" ng-click="query = ''">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </span>
+    </div>
+
+    <ul id="tasks">
+        <li
+            id="task-{{ task.id }}"
+            class="task priority-{{ task.priority || 'none' }}"
+            ng-class="{completed: task.complete}"
+            ng-repeat="task in tasks | filter:query"
+            ng-init="hidden=true"
+        >
+            <input type="checkbox" name="task-{{ task.id }}-complete" ng-change="task.complete ? complete(task) : uncomplete(task);" ng-model="task.complete" />
+            <span class="description" editable-text="task.raw" onaftersave="update(task)">
+                {{ task.description }}
+            </span>
+
+            <button ng-click="hidden=!hidden" title="Show detail" class="show-detail btn btn-default glyphicon glyphicon-chevron-{{ hidden ? 'down' : 'up'}}"></button>
+
+            <ul class="contexts">
+                <li ng-repeat="context in task.contexts"><a href ng-click="$parent.$parent.query = '@' + context" class="label label-success">@{{ context }}</a></li>
+            </ul>
+            <ul class="projects">
+                <li ng-repeat="project in task.projects"><a href ng-click="$parent.$parent.query = '+' + project" class="label label-info">+{{ project }}</a></li>
+            </ul>
+
+            <dl class="detail dl-horizontal" ng-hide="hidden" id="task-{{ task.id }}-detail">
+                <hr />
+                <dt class="created">Created</dt><dd>{{ task.created || '-' }}</dd>
+                <dt class="completed">Completed</dt><dd>{{ task.completed || '-' }}</dd>
+            </div>
+        </li>
+    </ul>
+</div>
