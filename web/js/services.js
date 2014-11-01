@@ -2,9 +2,18 @@
 
 angular.module('tasksServices', ['ngResource'])
     .service('config', function () {
-        this.server = null;
-        this.username = null;
-        this.password = null;
+        this.api = JSON.parse(
+            window.localStorage.getItem('config.api')
+        );
+
+        self = this;
+        this.save = function () {
+            window.localStorage.setItem('config.api', JSON.stringify(self.api));
+        };
+
+        this.clear = function () {
+            window.localStorage.removeItem('config.api');
+        };
     })
     .factory('Alerts', function() {
         var alerts = [];

@@ -3,44 +3,47 @@
 function LoginController($scope, $location, config)
 {
     $scope.submit = function () {
-        config.server = $scope.server;
-        config.username = $scope.username;
-        config.password = $scope.password;
+        config.api = {
+            server: $scope.server,
+            username: $scope.username,
+            password: $scope.password
+        };
 
+        if ($scope.remember) {
+            config.save();
+        }
         $location.path('/tasks');
     };
-
-    $scope.logout = function () {
-        $http.defaults.headers.common.Authorization = '';
-        $scope.tasks = null;
-
-        config.username = null;
-        config.password = null;
-        config.server = null;
-    }
 }
 LoginController.$inject = ['$scope', '$location', 'config'];
 
 function TasksListController($scope, Alerts, authService, $http, $location, config, $resource)
 {
-    if (config.server === null) {
+    if (config.api === null) {
         $location.path('/login');
     }
     else {
-        var credential = btoa(config.username + ':' + config.password);
+        var credential = btoa(config.api.username + ':' + config.api.password);
         $http.defaults.headers.common.Authorization = 'Basic ' + credential;
         authService.loginConfirmed();
 
         var Tasks = $resource(
-            config.server + '/tasks/:taskId',
+            config.api.server + '/tasks/:taskId',
             {taskId: '@taskId'},
             {
                 'save': { method: 'POST' },
                 'update': { method: 'PUT' },
-                'complete': { method: 'POST', url: config.server + '/tasks/:taskId/complete' },
-                'uncomplete': { method: 'POST', url: config.server + '/tasks/:taskId/uncomplete' }
+                'complete': { method: 'POST', url: config.api.server + '/tasks/:taskId/complete' },
+                'uncomplete': { method: 'POST', url: config.api.server + '/tasks/:taskId/uncomplete' }
             }
         );
+    }
+
+    $scope.logout = function () {
+        $http.defaults.headers.common.Authorization = '';
+        $scope.tasks = null;
+        config.clear();
+        $location.path('/login');
     }
 
     $scope.$on('event:auth-loginRequired', function() {
