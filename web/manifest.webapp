@@ -5,7 +5,7 @@
     "developer": {
         "name": "Sanpi"
     },
-    "launch_path": "/index.html#tasks",
+    "launch_path": "/index.html",
     "icons": {
         "128": "/img/icon-128.png"
     }
