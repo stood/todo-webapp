@@ -45,8 +45,8 @@
             ng-repeat="task in tasks | filter:query"
             ng-init="hidden=true"
         >
-            <input type="checkbox" name="task-{{ task.id }}-complete" ng-change="task.complete ? complete(task) : uncomplete(task);" ng-model="task.complete" />
             <span class="description" editable-text="task.raw" onaftersave="update(task)">
+                <input type="checkbox" name="task-{{ task.id }}-complete" ng-change="task.complete ? complete(task) : uncomplete(task);" ng-model="task.complete" />
                 {{ task.description }}
             </span>
 
@@ -63,7 +63,7 @@
                 <hr />
                 <dt class="created" ng-if="task.created">Created</dt><dd>{{ task.created }}</dd>
                 <dt class="completed" ng-if="task.completed">Completed</dt><dd>{{ task.completed }}</dd>
-            </div>
+            </dl>
         </li>
     </ul>
 </div>

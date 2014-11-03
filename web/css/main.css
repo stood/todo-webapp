@@ -56,18 +56,20 @@ ul.contexts, ul.projects {
     padding: 5px 10px;
 }
 
-.task .editable-text,
-.task .editable-controls,
-.task .editable-input {
-    width: 95%;
+.editable-wrap, .editable-controls, .task .editable-input {
+    width: 100%;
 }
 
-.task .editable-text ~ .contexts,
-.task .editable-text ~ .projects,
-.task .editable-text ~ .show-detail {
-    display: none;
+.editable-wrap {
+    white-space: normal;
 }
 
 .task .editable-click {
     border: none;
+}
+
+#tasks .task .editable-text ~ .contexts,
+#tasks .task .editable-text ~ .projects,
+#tasks .task .editable-text ~ .show-detail {
+    display: none;
 }
