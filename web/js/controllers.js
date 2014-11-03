@@ -86,6 +86,42 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
         $scope.do('update', task);
     };
 
+    $scope.acceptDrag = function (event) {
+        return (event.gesture.distance > window.innerWidth / 2);
+    };
+
+    $scope.drag = function (event) {
+        var colors = {
+            'right': {
+                'false': '#DFF0D8',
+                'true': '#68ab4c'
+            }
+        };
+
+        var target = angular.element(event.target);
+        var color = eval('colors.' + event.gesture.direction + '.' + $scope.acceptDrag(event));
+
+        target.css({
+            'background-color': color,
+            transform: 'translateX(' + event.gesture.deltaX + 'px)'
+        });
+    };
+
+    $scope.release = function (event, task) {
+        if ($scope.acceptDrag(event)) {
+            if (event.gesture.direction === 'right') {
+                task.complete ? $scope.uncomplete(task) : $scope.complete(task);
+            }
+        }
+
+        var target = angular.element(event.target);
+
+        target.css({
+            'background-color': '',
+            'transform': ''
+        });
+    };
+
     $scope.hasDetail = function (task) {
         return task.created || task.completed;
     };

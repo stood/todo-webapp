@@ -12,6 +12,7 @@ js/controllers.js
 js/services.js
 lib/angular/angular-csp.css
 lib/angular/angular.min.js
+lib/angular-gestures/gestures.min.js
 lib/angular-http-auth/src/http-auth-interceptor.js
 lib/angular-resource/angular-resource.min.js
 lib/angular-route/angular-route.min.js

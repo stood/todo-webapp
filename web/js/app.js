@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('todo.txt', ['ngRoute', 'tasksServices', 'xeditable', 'http-auth-interceptor']);
+var app = angular.module('todo.txt', ['angular-gestures', 'ngRoute', 'tasksServices', 'xeditable', 'http-auth-interceptor']);
 
 var serialize = function(obj, prefix) {
     var str = [];

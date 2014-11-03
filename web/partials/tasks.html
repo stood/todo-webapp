@@ -59,9 +59,11 @@
             ng-class="{completed: task.complete}"
             ng-repeat="task in tasks | filter:query"
             ng-init="hidden=true"
+            hm-drag-right="drag($event)"
+            hm-release="release($event, task)"
         >
             <span class="description" editable-text="task.raw" onaftersave="update(task)" e-form="form" ng-dblclick="form.$show()">
-                <input type="checkbox" name="task-{{ task.id }}-complete" ng-change="task.complete ? complete(task) : uncomplete(task);" ng-model="task.complete" />
+                <input type="checkbox" name="task-{{ task.id }}-complete" class="hidden-xs hidden-sm hidden-md" ng-change="task.complete ? complete(task) : uncomplete(task);" ng-model="task.complete" />
                 {{ task.description }}
             </span>
 
