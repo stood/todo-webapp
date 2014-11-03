@@ -40,11 +40,10 @@ ul.contexts, ul.projects {
 }
 
 #tasks ul.contexts, #tasks ul.projects {
-    top: -5px;
-    position: relative;
+    display: inline;
 }
 
-#tasks ul.contexts, #tasks ul.projects, .show-detail {
+.show-detail {
     float: right;
 }
 
