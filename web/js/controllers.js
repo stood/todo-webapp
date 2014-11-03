@@ -67,7 +67,7 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
         var f = eval('Tasks.' + action);
 
         f({'taskId': task.id}, task, function (data) {
-            $scope.tasks[data.id] = Tasks.get({'taskId': task.id});
+            $scope.tasks[task.id] = Tasks.get({'taskId': task.id});
             Alerts.add('success', data.message);
         }, function (response) {
             Alerts.add('danger', 'Task ' + task.id + ' couldn’t be update');
