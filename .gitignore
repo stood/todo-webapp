@@ -3,5 +3,4 @@
 /composer.lock
 /composer.phar
 /vendor
-/web/js/config/current.js
-/web/js/lib
+/web/lib
