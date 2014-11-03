@@ -23,7 +23,7 @@ angular.module('tasksServices', ['ngResource'])
                 return alerts;
             },
             add: function(type, message) {
-                alerts.push({ type: type, message: message });
+                alerts.unshift({ type: type, message: message });
             },
             close: function(index) {
                 alerts.splice(index, 1);

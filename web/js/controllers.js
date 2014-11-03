@@ -92,7 +92,7 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
 
     $scope.alerts = Alerts.all();
 
-    $scope.closeAlert = function (index) {
+    $scope.close = function (index) {
         Alerts.close(index);
     }
 

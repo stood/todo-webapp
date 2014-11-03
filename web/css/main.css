@@ -1,3 +1,8 @@
+.alert {
+    margin: 5px 0 0 0;
+    padding: 10px;
+}
+
 ul#tasks {
     list-style: none outside none;
     padding-left: 0;
