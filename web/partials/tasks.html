@@ -25,14 +25,14 @@
 
     <div class="input-group input-group-lg">
         <span class="input-group-btn">
-            <button class="btn btn-primary" name="create" title="New task" ng-click="save(query)">
-                <span class="glyphicon glyphicon-plus"></span>
+            <button class="btn btn-default" title="Clear search" ng-click="query = ''">
+                <span class="glyphicon glyphicon-remove"></span>
             </button>
         </span>
         <input type="text" id="search" class="search-query form-control" placeholder="Search or add" ng-model="query" />
         <span class="input-group-btn">
-            <button class="btn btn-default" title="Clear search" ng-click="query = ''">
-                <span class="glyphicon glyphicon-remove"></span>
+            <button class="btn btn-primary" name="create" title="New task" ng-click="save(query)">
+                <span class="glyphicon glyphicon-plus"></span>
             </button>
         </span>
     </div>
