@@ -4,6 +4,7 @@
     "keywords": ["todo.txt"],
     "license": "MIT",
     "require-dev": {
+        "beelab/bowerphp": "*@dev",
         "sanpi/behatch-contexts": "*@dev",
         "behat/mink-goutte-driver": "*",
         "behat/mink-selenium2-driver": "*"
