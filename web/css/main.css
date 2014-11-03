@@ -10,6 +10,8 @@ li.task {
     background-color: #F5F5F5;
     border: 1px solid rgba(0, 0, 0, 0.15);
     font-size: 1.5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 li.task.priority-A {
