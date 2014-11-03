@@ -67,3 +67,7 @@ ul.contexts, ul.projects {
 .task .editable-text ~ .show-detail {
     display: none;
 }
+
+.task .editable-click {
+    border: none;
+}
