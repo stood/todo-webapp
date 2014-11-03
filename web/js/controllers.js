@@ -86,6 +86,10 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
         $scope.do('update', task);
     };
 
+    $scope.hasDetail = function (task) {
+        return task.created || task.completed;
+    };
+
     $scope.alerts = Alerts.all();
 
     $scope.closeAlert = function (index) {

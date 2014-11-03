@@ -50,7 +50,7 @@
                 {{ task.description }}
             </span>
 
-            <button ng-click="hidden=!hidden" title="Show detail" class="show-detail btn btn-default glyphicon glyphicon-chevron-{{ hidden ? 'down' : 'up'}}"></button>
+            <button ng-click="hidden=!hidden" ng-show="hasDetail(task)" title="Show detail" class="show-detail btn btn-default glyphicon glyphicon-chevron-{{ hidden ? 'down' : 'up'}}"></button>
 
             <ul class="contexts">
                 <li ng-repeat="context in task.contexts"><a href ng-click="$parent.$parent.query = '@' + context" class="label label-success">@{{ context }}</a></li>
@@ -59,10 +59,10 @@
                 <li ng-repeat="project in task.projects"><a href ng-click="$parent.$parent.query = '+' + project" class="label label-info">+{{ project }}</a></li>
             </ul>
 
-            <dl class="detail dl-horizontal" ng-hide="hidden" id="task-{{ task.id }}-detail">
+            <dl class="detail dl-horizontal" ng-if="hasDetail(task)" ng-hide="hidden" id="task-{{ task.id }}-detail">
                 <hr />
-                <dt class="created">Created</dt><dd>{{ task.created || '-' }}</dd>
-                <dt class="completed">Completed</dt><dd>{{ task.completed || '-' }}</dd>
+                <dt class="created" ng-if="task.created">Created</dt><dd>{{ task.created }}</dd>
+                <dt class="completed" ng-if="task.completed">Completed</dt><dd>{{ task.completed }}</dd>
             </div>
         </li>
     </ul>
