@@ -18,10 +18,12 @@ lib/angular-route/angular-route.min.js
 lib/angular-xeditable/dist/css/xeditable.css
 lib/angular-xeditable/dist/js/xeditable.min.js
 lib/bootstrap/dist/css/bootstrap.min.css
+lib/bootstrap/dist/js/bootstrap.min.js
 lib/bootstrap/dist/fonts/glyphicons-halflings-regular.eot
 lib/bootstrap/dist/fonts/glyphicons-halflings-regular.svg
 lib/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf
 lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff
+lib/jquery/dist/jquery.min.js
 manifest.webapp
 partials/tasks.html
 
