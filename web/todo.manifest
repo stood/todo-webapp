@@ -1,14 +1,9 @@
 CACHE MANIFEST
 
-# v0.9
+# v0.11
 
 CACHE:
-css/bootstrap.min.css
 css/main.css
-fonts/glyphicons-halflings-regular.eot
-fonts/glyphicons-halflings-regular.svg
-fonts/glyphicons-halflings-regular.ttf
-fonts/glyphicons-halflings-regular.woff
 img/favicon.png
 index.html
 js/app.js
@@ -22,6 +17,11 @@ lib/angular-resource/angular-resource.min.js
 lib/angular-route/angular-route.min.js
 lib/angular-xeditable/dist/css/xeditable.css
 lib/angular-xeditable/dist/js/xeditable.min.js
+lib/bootstrap/dist/css/bootstrap.min.css
+lib/bootstrap/dist/fonts/glyphicons-halflings-regular.eot
+lib/bootstrap/dist/fonts/glyphicons-halflings-regular.svg
+lib/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf
+lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff
 manifest.webapp
 partials/tasks.html
 
