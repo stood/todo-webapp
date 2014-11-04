@@ -1,0 +1,68 @@
+<div class="container">
+    <div>
+        <div ng-repeat="alert in alerts" class="alert alert-{{ alert.type }} alert-dismissable" ng-click="closeAlert($index)">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ alert.message }}
+        </div>
+    </div>
+
+    <form ng-submit="form.$valid && register()" name="form" class="form-horizontal">
+
+        <div class="form-group has-feedback" ng-class="{'has-error': form.username.$invalid, 'has-success': form.username.$valid}">
+            <label for="username" class="col-sm-2 control-label">Username</label>
+            <div class="col-sm-10">
+                <input type="text" ng-model="username" name="username" class="form-control" required />
+                <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-remove': form.username.$invalid, 'glyphicon-ok': form.username.$valid}"></span>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback" ng-class="{'has-error': form.password.$invalid, 'has-success': form.password.$valid}">
+            <label for="password" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" ng-model="password" name="password" class="form-control" ng-hide="showPassword" required />
+                <input type="text" ng-model="password" class="form-control" ng-show="showPassword" />
+                <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-remove': form.password.$invalid, 'glyphicon-ok': form.password.$valid}"></span>
+                <div class="col-sm-10">
+                    <label>
+                        <input type="checkbox" ng-model="showPassword"> Show password
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group has-feedback" ng-class="{'has-error': form.email.$invalid, 'has-success': form.email.$valid}">
+            <label for="email" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" ng-model="email" name="email" class="form-control" required />
+                <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-remove': form.email.$invalid, 'glyphicon-ok': form.email.$valid}"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <label>
+                    <input type="checkbox" ng-model="customServer"> Custom server
+                </label>
+            </div>
+        </div>
+
+        <div ng-show="customServer" class="form-group has-feedback" ng-class="{'has-error': form.server.$invalid, 'has-success': form.server.$valid}">
+            <label for="server" class="col-sm-2 control-label">Server</label>
+            <div class="col-sm-10">
+                <input type="url" ng-model="server" name="server" class="form-control" placeholder="https://…" required />
+                <span class="glyphicon form-control-feedback" ng-class="{'glyphicon-remove': form.server.$invalid, 'glyphicon-ok': form.server.$valid}"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-primary" name="register">
+                    Register
+                </button>
+                <a href="#/" class="btn btn-default">
+                    Cancel
+                </a>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,5 +1,39 @@
 'use strict';
 
+function RegisterController($scope, $location, $resource, Alerts)
+{
+    $scope.server = 'https://api.todo.homecomputing.fr';
+
+    $scope.register = function () {
+        var Users = $resource(
+            $scope.server + '/users/:userId',
+            {userId: '@userId'},
+            {
+                'save': { method: 'POST' }
+            }
+        );
+
+        Users.save({
+            'username': $scope.username,
+            'password': $scope.password,
+            'email': $scope.email
+        }, function (data) {
+            Alerts.add('success', 'Register done');
+            $location.path('/login');
+        }, function (response) {
+            Alerts.add('danger', 'Couldn’t register');
+        });
+
+    };
+
+    $scope.alerts = Alerts.all();
+
+    $scope.close = function (index) {
+        Alerts.close(index);
+    }
+}
+RegisterController.$inject = ['$scope', '$location', '$resource', 'Alerts'];
+
 function LoginController($scope, $location, config)
 {
     $scope.submit = function () {

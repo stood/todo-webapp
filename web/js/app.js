@@ -28,6 +28,11 @@ app.config(['$httpProvider', function($httpProvider) {
 }]);
 
 app.config(['$routeProvider', function($routeProvider) {
+    $routeProvider.when('/register', {
+        templateUrl: 'partials/register.html',
+        controller: RegisterController
+    });
+
     $routeProvider.when('/login', {
         templateUrl: 'partials/login.html',
         controller: LoginController
