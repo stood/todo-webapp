@@ -3,16 +3,25 @@
 angular.module('tasksServices', ['ngResource'])
     .service('config', function () {
         this.api = JSON.parse(
-            window.localStorage.getItem('config.api')
+            (
+                window.localStorage.getItem('config.api')
+                || window.sessionStorage.getItem('config.api')
+            )
         );
 
         self = this;
-        this.save = function () {
-            window.localStorage.setItem('config.api', JSON.stringify(self.api));
+        this.save = function (persistent) {
+            if (persistent === true) {
+                window.localStorage.setItem('config.api', JSON.stringify(self.api));
+            }
+            else {
+                window.sessionStorage.setItem('config.api', JSON.stringify(self.api));
+            }
         };
 
         this.clear = function () {
             window.localStorage.removeItem('config.api');
+            window.sessionStorage.removeItem('config.api');
         };
     })
     .factory('Alerts', function() {

@@ -47,9 +47,7 @@ function LoginController($scope, $location, config, Alerts)
             password: $scope.password
         };
 
-        if ($scope.remember) {
-            config.save();
-        }
+        config.save($scope.remember);
         $location.path('/tasks');
     };
 
@@ -65,6 +63,7 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
 {
     if (config.api === null) {
         $location.path('/login');
+        return;
     }
     else {
         var credential = btoa(config.api.username + ':' + config.api.password);
