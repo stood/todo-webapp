@@ -1,0 +1,8 @@
+<div ng-controller="AlertsController">
+    <div ng-if="alerts.length > 0">
+        <div id="alerts" ng-click="close(0)" class="alert alert-{{ alerts[0].type }}" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            {{ alerts[0].message }}
+        </div>
+    </div>
+</div>

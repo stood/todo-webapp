@@ -26,12 +26,7 @@
         </div>
     </div>
 
-    <div class="container" ng-if="alerts.length > 0">
-        <div id="alerts" ng-click="close(0)" class="alert alert-{{ alerts[0].type }}" role="alert">
-            <button type="button" class="close">&times;</button>
-            {{ alerts[0].message }}
-        </div>
-    </div>
+    <div ng-include="'partials/alerts.html'" class="container"></div>
 </nav>
 
 <div class="container">

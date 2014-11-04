@@ -27,12 +27,6 @@ function RegisterController($scope, $location, $resource, Alerts)
         });
 
     };
-
-    $scope.alerts = Alerts.all();
-
-    $scope.close = function (index) {
-        Alerts.close(index);
-    }
 }
 RegisterController.$inject = ['$scope', '$location', '$resource', 'Alerts'];
 
@@ -50,12 +44,6 @@ function LoginController($scope, $location, config, Alerts)
         config.save($scope.remember);
         $location.path('/tasks');
     };
-
-    $scope.alerts = Alerts.all();
-
-    $scope.close = function (index) {
-        Alerts.close(index);
-    }
 }
 LoginController.$inject = ['$scope', '$location', 'config', 'Alerts'];
 
@@ -144,10 +132,16 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
 
     $scope.alerts = Alerts.all();
 
-    $scope.close = function (index) {
-        Alerts.close(index);
-    }
-
     $scope.refresh();
 }
 TasksListController.$inject = ['$scope', 'Alerts', 'authService', '$http', '$location', 'config', '$resource'];
+
+function AlertsController($scope, Alerts)
+{
+    $scope.alerts = Alerts.all();
+
+    $scope.close = function (index) {
+        Alerts.close(index);
+    }
+}
+AlertsController.$inject = ['$scope', 'Alerts'];

@@ -47,5 +47,5 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.run(function(editableOptions) {
-  editableOptions.theme = 'bs3';
+    editableOptions.theme = 'bs3';
 });
