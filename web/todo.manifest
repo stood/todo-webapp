@@ -25,6 +25,7 @@ lib/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf
 lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff
 lib/jquery/dist/jquery.min.js
 manifest.webapp
+partials/sidebar.html
 partials/tasks.html
 
 NETWORK:

@@ -73,6 +73,8 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
     $scope.logout = function () {
         $http.defaults.headers.common.Authorization = '';
         $scope.tasks = null;
+        $scope.projects = null;
+        $scope.contexts = null;
         config.clear();
         $location.path('/login');
     }
@@ -82,7 +84,15 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
     });
 
     $scope.refresh = function () {
+        $scope.projects = [];
+        $scope.contexts = [];
         $scope.tasks = Tasks.query(function (data) {
+            data.forEach(function (d) {
+                $scope.projects = $scope.projects.concat(d.projects);
+                $scope.contexts = $scope.contexts.concat(d.contexts);
+            });
+            $scope.projects = $.unique($scope.projects.sort());
+            $scope.contexts = $.unique($scope.contexts.sort());
         }, function (response) {
             if (response.status === 403) {
                 Alerts.add('danger', 'Invalid username or password');
@@ -133,6 +143,14 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
     $scope.alerts = Alerts.all();
 
     $scope.refresh();
+
+    $scope.hideMenu = function () {
+        $('.navbar-collapse').collapse('hide');
+    };
+
+    $scope.toggleSidebar = function () {
+        $('#wrapper').toggleClass('toggled');
+    };
 }
 TasksListController.$inject = ['$scope', 'Alerts', 'authService', '$http', '$location', 'config', '$resource'];
 
