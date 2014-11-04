@@ -94,7 +94,16 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
     });
 
     $scope.refresh = function () {
-        $scope.tasks = Tasks.query();
+        $scope.tasks = Tasks.query(function (data) {
+        }, function (response) {
+            if (response.status === 403) {
+                Alerts.add('danger', 'Invalid username or password');
+                $scope.logout();
+            }
+            else {
+                Alerts.add('danger', 'Unable to update tasks: ' + response.statusText);
+            }
+        });
     };
 
     $scope.save = function (raw) {
