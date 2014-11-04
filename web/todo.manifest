@@ -1,13 +1,13 @@
 CACHE MANIFEST
 
-# v0.11
+# v0.12
 
 CACHE:
 css/main.css
+css/sidebar.css
 img/favicon.png
 index.html
 js/app.js
-js/config/current.js
 js/controllers.js
 js/services.js
 lib/angular/angular-csp.css
@@ -25,6 +25,9 @@ lib/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf
 lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff
 lib/jquery/dist/jquery.min.js
 manifest.webapp
+partials/alerts.html
+partials/login.html
+partials/register.html
 partials/sidebar.html
 partials/tasks.html
 
