@@ -1,6 +1,6 @@
 'use strict';
 
-var DEFAULT_SERVER = 'https://api.todo.homecomputing.fr';
+var DEFAULT_SERVER = 'http://api.todo.homecomputing.fr';
 
 function RegisterController($scope, $location, $resource, Alerts)
 {
