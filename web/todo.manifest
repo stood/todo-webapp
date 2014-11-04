@@ -5,7 +5,7 @@ CACHE MANIFEST
 CACHE:
 css/main.css
 css/sidebar.css
-img/favicon.png
+img/favicon.ico
 index.html
 js/app.js
 js/controllers.js
