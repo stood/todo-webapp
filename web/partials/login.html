@@ -10,26 +10,34 @@
         No account? <a href="#/register">Register now!</a>
     </div>
 
-    <div id="login" class="form-horizontal">
+    <form ng-submit="form.$valid && login()" name="form" class="form-horizontal">
 
         <div class="form-group">
             <label for="username" class="col-sm-2 control-label">Username</label>
             <div class="col-sm-10">
-                <input type="text" ng-model="username" class="form-control" />
+                <input type="text" ng-model="username" name="username" class="form-control" required />
             </div>
         </div>
 
         <div class="form-group">
             <label for="password" class="col-sm-2 control-label">Password</label>
             <div class="col-sm-10">
-                <input type="password" ng-model="password" class="form-control" />
+                <input type="password" ng-model="password" name="password" class="form-control" required />
             </div>
         </div>
 
         <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <label>
+                    <input type="checkbox" ng-model="customServer"> Custom server
+                </label>
+            </div>
+        </div>
+
+        <div ng-show="customServer" class="form-group">
             <label for="server" class="col-sm-2 control-label">Server</label>
             <div class="col-sm-10">
-                <input type="url" ng-model="server" class="form-control" placeholder="https://…" />
+                <input type="url" ng-model="server" name="server" class="form-control" placeholder="https://…" required />
             </div>
         </div>
 
@@ -43,10 +51,8 @@
 
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button class="btn btn-primary" name="login" ng-click="submit(username, password)">
-                    Login
-                </button>
+                <button class="btn btn-primary">Login</button>
             </div>
         </div>
-    </div>
+    </form>
 </div>

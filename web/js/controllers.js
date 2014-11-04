@@ -1,8 +1,10 @@
 'use strict';
 
+var DEFAULT_SERVER = 'https://api.todo.homecomputing.fr';
+
 function RegisterController($scope, $location, $resource, Alerts)
 {
-    $scope.server = 'https://api.todo.homecomputing.fr';
+    $scope.server = DEFAULT_SERVER;
 
     $scope.register = function () {
         var Users = $resource(
@@ -18,7 +20,7 @@ function RegisterController($scope, $location, $resource, Alerts)
             'password': $scope.password,
             'email': $scope.email
         }, function (data) {
-            Alerts.add('success', 'Register done');
+            Alerts.add('success', data.message);
             $location.path('/login');
         }, function (response) {
             Alerts.add('danger', 'Couldn’t register');
@@ -34,9 +36,11 @@ function RegisterController($scope, $location, $resource, Alerts)
 }
 RegisterController.$inject = ['$scope', '$location', '$resource', 'Alerts'];
 
-function LoginController($scope, $location, config)
+function LoginController($scope, $location, config, Alerts)
 {
-    $scope.submit = function () {
+    $scope.server = DEFAULT_SERVER;
+
+    $scope.login = function () {
         config.api = {
             server: $scope.server,
             username: $scope.username,
@@ -48,8 +52,14 @@ function LoginController($scope, $location, config)
         }
         $location.path('/tasks');
     };
+
+    $scope.alerts = Alerts.all();
+
+    $scope.close = function (index) {
+        Alerts.close(index);
+    }
 }
-LoginController.$inject = ['$scope', '$location', 'config'];
+LoginController.$inject = ['$scope', '$location', 'config', 'Alerts'];
 
 function TasksListController($scope, Alerts, authService, $http, $location, config, $resource)
 {
