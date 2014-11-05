@@ -53,22 +53,21 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
         $location.path('/login');
         return;
     }
-    else {
-        var credential = btoa(config.api.username + ':' + config.api.password);
-        $http.defaults.headers.common.Authorization = 'Basic ' + credential;
-        authService.loginConfirmed();
 
-        var Tasks = $resource(
-            config.api.server + '/tasks/:taskId',
-            {taskId: '@taskId'},
-            {
-                'save': { method: 'POST' },
-                'update': { method: 'PUT' },
-                'complete': { method: 'POST', url: config.api.server + '/tasks/:taskId/complete' },
-                'uncomplete': { method: 'POST', url: config.api.server + '/tasks/:taskId/uncomplete' }
-            }
-        );
-    }
+    var credential = btoa(config.api.username + ':' + config.api.password);
+    $http.defaults.headers.common.Authorization = 'Basic ' + credential;
+    authService.loginConfirmed();
+
+    var Tasks = $resource(
+        config.api.server + '/tasks/:taskId',
+        {taskId: '@taskId'},
+        {
+            'save': { method: 'POST' },
+            'update': { method: 'PUT' },
+            'complete': { method: 'POST', url: config.api.server + '/tasks/:taskId/complete' },
+            'uncomplete': { method: 'POST', url: config.api.server + '/tasks/:taskId/uncomplete' }
+        }
+    );
 
     $scope.logout = function () {
         $http.defaults.headers.common.Authorization = '';
