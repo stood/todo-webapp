@@ -1,7 +1,11 @@
 Feature: Web interface
     Background:
         Given I am on the homepage
-        And I wait 1 second
+        And I fill in "username" with "foo"
+        And I fill in "password" with "bar"
+        And I check "custom-server"
+        And I fill in "server" with "http://localhost:8080"
+        And I press "login"
 
     @javascript
     Scenario: Task list
@@ -25,15 +29,13 @@ Feature: Web interface
     @javascript
     Scenario: Complete a task
         When I check "task-6-complete"
-        And I reload the page
         Then the checkbox "task-6-complete" should be checked
         And I should see text matching "Task \d+ updated"
 
     @javascript
     Scenario: Rapid filter
         When I click on the 1st ".projects a" element
-        Then I should see "+winning" in the "#search" element
-        And I should see 1 ".task" elements
+        Then I should see 1 ".task" elements
 
     @javascript
     Scenario: Create a task

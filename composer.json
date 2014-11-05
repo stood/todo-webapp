@@ -9,6 +9,9 @@
         "behat/mink-goutte-driver": "*",
         "behat/mink-selenium2-driver": "*"
     },
+    "autoload-dev": {
+        "psr-4": { "": "tests/Features/bootstrap" }
+    },
     "config": {
         "bin-dir": "bin"
     }
