@@ -1,0 +1,9 @@
+{
+    "name": "Todo.txt",
+    "package_path": "http://sanpii.github.io/todo-webapp/package.zip",
+    "version": "0.1",
+    "developer": {
+        "name": "Sanpi",
+        "url": "http://sanpi.homecomputing.fr"
+    }
+}

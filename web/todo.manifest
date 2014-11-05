@@ -1,0 +1,35 @@
+CACHE MANIFEST
+
+# v0.12
+
+CACHE:
+#css/main.css
+#css/sidebar.css
+#img/favicon.ico
+#index.html
+#js/app.js
+#js/controllers.js
+#js/services.js
+#lib/angular/angular-csp.css
+#lib/angular/angular.min.js
+#lib/angular-http-auth/src/http-auth-interceptor.js
+#lib/angular-resource/angular-resource.min.js
+#lib/angular-route/angular-route.min.js
+#lib/angular-xeditable/dist/css/xeditable.css
+#lib/angular-xeditable/dist/js/xeditable.min.js
+#lib/bootstrap/dist/css/bootstrap.min.css
+#lib/bootstrap/dist/js/bootstrap.min.js
+#lib/bootstrap/dist/fonts/glyphicons-halflings-regular.eot
+#lib/bootstrap/dist/fonts/glyphicons-halflings-regular.svg
+#lib/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf
+#lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff
+#lib/jquery/dist/jquery.min.js
+#manifest.webapp
+#partials/alerts.html
+#partials/login.html
+#partials/register.html
+#partials/sidebar.html
+#partials/tasks.html
+
+NETWORK:
+*

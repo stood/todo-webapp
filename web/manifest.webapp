@@ -1,0 +1,12 @@
+{
+    "name": "Todo.txt",
+    "description": "todo.txt webapp",
+    "version": "0.1",
+    "developer": {
+        "name": "Sanpi"
+    },
+    "launch_path": "/index.html",
+    "icons": {
+        "128": "/img/logo.png"
+    }
+}
