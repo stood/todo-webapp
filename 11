@@ -1,0 +1,9 @@
+title: Review design
+status: new
+assign:
+tags: design
+milestone:
+type: enhancement
+
+Follow the [Firefox OS
+guidelines](https://www.mozilla.org/en-US/styleguide/products/firefox-os/)
