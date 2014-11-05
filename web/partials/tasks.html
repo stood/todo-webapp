@@ -60,7 +60,7 @@
                 ng-repeat="task in tasks | filter:query"
                 ng-init="hidden=true"
             >
-                <span class="description" editable-text="task.raw" onaftersave="update(task)" e-form="form" ng-dblclick="form.$show()">
+                <span class="description" editable-text="task.raw" onaftersave="update(task)" e-form="form" ng-dblclick="form.$show()" on-long-press="form.$show()">
                     <input type="checkbox" name="task-{{ task.id }}-complete" ng-change="task.complete ? complete(task) : uncomplete(task);" ng-model="task.complete" />
                     {{ task.description }}
                 </span>
