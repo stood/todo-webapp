@@ -1,0 +1,9 @@
+title: Geolocalisation of contexts
+status: new
+assign:
+tags:
+milestone:
+type: enhancement
+
+Add coordinates to contexts and notify users when its location matches (around x
+meters).
