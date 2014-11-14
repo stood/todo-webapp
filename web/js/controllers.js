@@ -106,6 +106,7 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
     $scope.save = function (raw) {
         Tasks.save({'raw': raw}, function (data) {
             $scope.tasks[data.id] = Tasks.get({'taskId': data.id});
+            $scope.query = '';
             Alerts.add('success', data.message);
         }, function (response) {
             Alerts.add('danger', 'Couldn’t create task');
