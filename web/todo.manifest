@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-# v0.12
+# v0.13
 
 CACHE:
 css/main.css
@@ -24,6 +24,7 @@ lib/bootstrap/dist/fonts/glyphicons-halflings-regular.svg
 lib/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf
 lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff
 lib/jquery/dist/jquery.min.js
+lib/js-md5/js/md5.js
 manifest.webapp
 partials/alerts.html
 partials/login.html

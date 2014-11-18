@@ -35,17 +35,32 @@ function LoginController($scope, $location, config, Alerts)
     $scope.server = DEFAULT_SERVER;
 
     $scope.login = function () {
-        config.api = {
-            server: $scope.server,
-            username: $scope.username,
-            password: $scope.password
-        };
+        config.api = {};
 
-        config.save($scope.remember);
+        config.api.server = $scope.server;
+        config.api.username = $scope.username;
+        config.api.password = $scope.password;
+
+        config.save();
         $location.path('/tasks');
     };
 }
 LoginController.$inject = ['$scope', '$location', 'config', 'Alerts'];
+
+function getAuthorization(method, uri, param)
+{
+    var A1 = md5(param.username + ':' + param.realm + ':' + param.password);
+    var A2 = md5(method + ':' + uri);
+    var response = md5(A1 + ':' + param.nonce + ':' + param.nc + ':' + param.cnonce + ':' + param.qop + ':' + A2);
+    return 'Digest username="' + param.username + '", realm="' + param.realm
+        + '", nonce="' + param.nonce + '", uri="' + uri
+        + '", cnonce="' + param.cnonce + '", nc="' + param.nc
+        + '", qop="' + param.qop + '", response="' + response + '"';
+}
+
+function unq(quotedString) {
+    return quotedString.substr(1, quotedString.length - 2).replace(/(?:(?:\r\n)?[ \t])+/g, ' ');
+}
 
 function TasksListController($scope, Alerts, authService, $http, $location, config, $resource)
 {
@@ -54,9 +69,6 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
         return;
     }
 
-    var credential = btoa(config.api.username + ':' + config.api.password);
-    $http.defaults.headers.common.Authorization = 'Basic ' + credential;
-    authService.loginConfirmed();
 
     var Tasks = $resource(
         config.api.server + '/tasks/:taskId',
@@ -78,8 +90,41 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
         $location.path('/login');
     }
 
-    $scope.$on('event:auth-loginRequired', function() {
-        $location.path('/login');
+    $scope.$on('event:auth-loginRequired', function (event, rejection) {
+        var ws = '(?:(?:\\r\\n)?[ \\t])+',
+            reg = /.+?\:\/\/.+?(\/.+?)(?:#|\?|$)/,
+            token = '(?:[\\x21\\x23-\\x27\\x2A\\x2B\\x2D\\x2E\\x30-\\x39\\x3F\\x41-\\x5A\\x5E-\\x7A\\x7C\\x7E]+)',
+            quotedString = '"(?:[\\x00-\\x0B\\x0D-\\x21\\x23-\\x5B\\\\x5D-\\x7F]|' + ws + '|\\\\[\\x00-\\x7F])*"',
+            tokenizer = new RegExp(token + '(?:=(?:' + quotedString + '|' + token + '))?', 'g'),
+            tokens = rejection.data.message.match(tokenizer),
+            uri = reg.exec(rejection.config.url);
+
+        config.api.nc = '00000001';
+        config.api.uri = rejection.config.url;
+
+        tokens.forEach(function (value) {
+            if (value.match('nonce')) {
+                config.api.nonce = unq(value.split('=')[1]);
+            }
+            if (value.match('realm')) {
+                config.api.realm = unq(value.split('=')[1]);
+            }
+            if (value.match('qop')) {
+                config.api.qop = unq(value.split('=')[1]);
+            }
+            if (value.match('cnonce')) {
+                config.api.cnonce = unq(value.split('=')[1]);
+            }
+        });
+
+        $http.defaults.headers.common.Authorization = getAuthorization(
+            'GET',
+            rejection.config.url,
+            config.api
+        );
+        authService.loginConfirmed();
+
+        //$location.path('/login');
     });
 
     $scope.refresh = function () {
@@ -140,10 +185,6 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
         return task.created || task.completed;
     };
 
-    $scope.alerts = Alerts.all();
-
-    $scope.refresh();
-
     $scope.hideMenu = function () {
         $('.navbar-collapse').collapse('hide');
     };
@@ -151,6 +192,10 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
     $scope.toggleSidebar = function () {
         $('#wrapper').toggleClass('toggled');
     };
+
+    $scope.alerts = Alerts.all();
+
+    $scope.refresh();
 }
 TasksListController.$inject = ['$scope', 'Alerts', 'authService', '$http', '$location', 'config', '$resource'];
 
