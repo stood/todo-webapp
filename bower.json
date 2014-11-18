@@ -1,11 +1,12 @@
 {
     "name": "todo-webapp",
     "dependencies": {
-        "angular": "1.2",
-        "angular-route": "1.2",
-        "angular-resource": "1.2",
-        "angular-xeditable": "0.1",
-        "angular-http-auth": "1.2",
-        "bootstrap": "3.3"
+        "angular": "~1.3",
+        "angular-route": "~1.3",
+        "angular-resource": "~1.3",
+        "angular-xeditable": "~0.1",
+        "angular-http-auth": "~1.3",
+        "js-md5": "~1.0",
+        "bootstrap": "~3.3"
     }
 }

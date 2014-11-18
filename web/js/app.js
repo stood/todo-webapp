@@ -46,6 +46,8 @@ app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/tasks'});
 }]);
 
+app.controller('AlertsController', AlertsController);
+
 app.directive('onLongPress', function($timeout) {
     return {
         restrict: 'A',
