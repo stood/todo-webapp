@@ -1,85 +1,84 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container" ng-if="alerts.length == 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+<section role="region" class="vbox fit flex">
+    <header>
+        <a href ng-click="hideMenu(); toggleSidebar()"><span class="icon icon-menu">Menu</span></a>
+        <menu type="toolbar">
+            <a href ng-click="todo();"><span class="icon icon-add">Add</span></a>
+        </menu>
+        <h1>Todo.txt</h1>
+    </header>
+    <!--
+    <div ng-include="'partials/alerts.html'" class="container"></div>
+    -->
 
-        </div>
+    <section class="gaia-list fit scroll sticky">
+        <article>
+            <ul>
+                <li
+                    id="task-{{ task.id }}"
+                    class="task priority-{{ task.priority || 'none' }}"
+                    ng-class="{completed: task.complete}"
+                    ng-repeat="task in tasks | filter:query.toString()"
+                    ng-init="hidden=false; search=true"
+                    ng-click="todo()"
+                >
+                    {{ task.description }}
 
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href ng-click="hideMenu(); toggleSidebar()">
-                        <span class="glyphicon glyphicon-list"></span> Menu
-                    </a>
-                </li>
-                <li>
-                    <a href ng-click="hideMenu(); refresh()">
-                        <span class="glyphicon glyphicon-refresh"></span> Update
-                    </a>
-                </li>
-                <li>
-                    <a href ng-click="hideMenu(); logout()">
-                        <span class="glyphicon glyphicon-log-out"></span> Logout
-                    </a>
+                    <span class="context" ng-repeat="context in task.contexts">
+                        <a href ng-click="todo()" class="label label-success">@{{ context }}</a>
+                    </span>
+
+                    <span class="project" ng-repeat="project in task.projects">
+                        <a href ng-click="todo()" class="label label-info">+{{ project }}</a>
+                    </span>
+
+                    <button ng-click="hidden=!hidden" ng-show="hasDetail(task)" title="Show detail" class="show-detail" data-icon="{{ hidden ? 'more' : 'minus'}}"></button>
+
+                    <dl class="detail" ng-if="hasDetail(task)" ng-hide="hidden" id="task-{{ task.id }}-detail">
+                        <hr />
+                        <dt class="created" ng-if="task.created">Created</dt><dd>{{ task.created }}</dd>
+                        <dt class="completed" ng-if="task.completed">Completed</dt><dd>{{ task.completed }}</dd>
+                    </dl>
                 </li>
             </ul>
-        </div>
-    </div>
+        </article>
+    </section>
 
-    <div ng-include="'partials/alerts.html'" class="container"></div>
-</nav>
+    <footer class="gaia-footer" role="toolbar">
+        <button ng-click="hideMenu(); refresh()" data-icon="sync">Sync</button>
+        <button ng-click="search=true" data-icon="search">Search</button>
+        <button ng-click="hideMenu(); logout()" data-icon="close">Logout</button>
+    </footer>
+</section>
 
-<div ng-include="'partials/sidebar.html'"></div>
+<form ng-show="search" role="dialog" data-type="object">
+    <section class="skin-dark">
 
-<div id="page-content-wrapper">
-    <div class="container">
-        <div class="input-group input-group-lg">
-            <span class="input-group-btn">
-                <button class="btn btn-default" title="Clear search" ng-click="query = ''">
-                    <span class="glyphicon glyphicon-remove"></span>
-                </button>
-            </span>
-            <input type="text" id="search" class="search-query form-control" placeholder="Search or add" ng-model="query" />
-            <span class="input-group-btn">
-                <button class="btn btn-primary" name="create" title="New task" ng-click="save(query)">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </span>
-        </div>
+        <input type="text" id="search" class="search-query form-control" placeholder="Search" ng-model="query.string" />
 
-        <ul id="tasks">
-            <li
-                id="task-{{ task.id }}"
-                class="task priority-{{ task.priority || 'none' }}"
-                ng-class="{completed: task.complete}"
-                ng-repeat="task in tasks | filter:query"
-                ng-init="hidden=true"
-            >
-                <span class="description" editable-text="task.raw" onaftersave="update(task)" e-form="form" ng-dblclick="form.$show()" on-long-press="form.$show()">
-                    <input type="checkbox" name="task-{{ task.id }}-complete" ng-change="task.complete ? complete(task) : uncomplete(task);" ng-model="task.complete" />
-                    {{ task.description }}
-                </span>
-
-                <button ng-click="hidden=!hidden" ng-show="hasDetail(task)" title="Show detail" class="show-detail btn btn-default glyphicon glyphicon-chevron-{{ hidden ? 'down' : 'up'}}"></button>
-
-                <ul class="contexts">
-                    <li ng-repeat="context in task.contexts"><a href ng-click="$parent.$parent.query = '@' + context" class="label label-success">@{{ context }}</a></li>
-                </ul>
-                <ul class="projects">
-                    <li ng-repeat="project in task.projects"><a href ng-click="$parent.$parent.query = '+' + project" class="label label-info">+{{ project }}</a></li>
-                </ul>
-
-                <dl class="detail dl-horizontal" ng-if="hasDetail(task)" ng-hide="hidden" id="task-{{ task.id }}-detail">
-                    <hr />
-                    <dt class="created" ng-if="task.created">Created</dt><dd>{{ task.created }}</dd>
-                    <dt class="completed" ng-if="task.completed">Completed</dt><dd>{{ task.completed }}</dd>
-                </dl>
+        <h2>Contexts</h2>
+        <ul class="bb-checkbox">
+            <li ng-repeat="context in contexts track by $index">
+                <label>
+                    <input type="checkbox" ng-model="query.contexts[$index]" />
+                    <span data-icon="tick">{{ context }}</span>
+                </label>
             </li>
         </ul>
-    </div>
-</div>
+
+        <h2>Projects</h2>
+        <ul class="bb-checkbox">
+            <li ng-repeat="project in projects track by $index">
+                <label>
+                    <input type="checkbox" ng-model="query.projects[$index]" />
+                    <span data-icon="tick">{{ project }}</span>
+                </label>
+            </li>
+        </ul>
+    </section>
+
+    <menu type="toolbar">
+        <button ng-click="search=false">Cancel</button>
+        <button ng-click="query.clear()" class="danger">Clear</button>
+        <button ng-click="search=false" class="recommend">Ok</button>
+    </menu>
+</form>

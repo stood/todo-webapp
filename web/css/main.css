@@ -1,5 +1,5 @@
-body {
-    padding-top: 51px;
+* {
+    font-family: "Fira Sans";
 }
 
 .alert {
@@ -7,93 +7,36 @@ body {
     padding: 10px;
 }
 
-ul#tasks {
-    list-style: none outside none;
-    padding-left: 0;
-}
-
-li.task {
-    padding: 10px 10px;
-    margin: 10px 0;
-    border-radius: 4px;
-    background-color: #F5F5F5;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    font-size: 1.5em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-li.task.priority-A {
+.task.priority-A {
     background-color: rgb(242, 222, 222);
 }
 
-li.task.priority-B {
+.task.priority-B {
     background-color: rgb(252, 248, 227);
 }
 
-li.task.priority-C {
+.task.priority-C {
     background-color: rgb(217, 237, 247);
 }
 
-li.task.priority-D {
+.task.priority-D {
     background-color: rgb(223, 240, 216);
 }
 
-li.task .description {
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-
-    cursor: default;
-}
-
-li.task.completed .description {
+.task.completed p {
     text-decoration: line-through;
 }
 
-ul.contexts, ul.projects {
-    list-style: none outside none;
-    padding-left: 0;
-}
-
-#tasks ul.contexts, #tasks ul.projects {
-    display: inline;
-}
-
 .show-detail {
+
     float: right;
 }
 
-.contexts li, .projects li, .show-detail {
-    display: inline;
-    margin-left: 5px;
+[data-type="list"] .show-detail[data-icon]::before
+{
+    line-height: 2rem;
 }
 
-.contexts li a, .projects li a {
-    padding: 5px 10px;
-}
-
-.editable-wrap, .editable-controls, .task .editable-input {
-    width: 100%;
-}
-
-.editable-wrap {
-    white-space: normal;
-}
-
-.task .editable-click {
-    border: none;
-}
-
-#tasks .task .editable-text ~ .contexts,
-#tasks .task .editable-text ~ .projects,
-#tasks .task .editable-text ~ .show-detail {
-    display: none;
-}
-
-@media(min-width:768px) {
-    .container {
-        padding-left: 5px;
-        padding-right: 5px;
-    }
+[data-type="list"] li {
+    height: auto;
 }

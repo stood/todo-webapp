@@ -2,12 +2,23 @@
 <html manifest="todo.manifest" ng-app="todo.txt" ng-csp>
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+
         <title>todo.txt</title>
         <link rel="shortcut icon" href="img/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link href="lib/angular/angular-csp.css" rel="stylesheet" />
         <link href="lib/angular-xeditable/dist/css/xeditable.css" rel="stylesheet" />
+
+        <link href="lib/building-blocks/style/headers.css" rel="stylesheet" type="text/css">
+        <link href="lib/building-blocks/style/layout.css" rel="stylesheet" type="text/css">
+        <link href="lib/building-blocks/style/input_areas.css" rel="stylesheet" type="text/css">
+        <link href="lib/building-blocks/style/lists.css" rel="stylesheet" type="text/css">
+        <link href="lib/building-blocks/style/switches.css" rel="stylesheet" type="text/css">
+        <link href="lib/building-blocks/style/object_menu.css" rel="stylesheet" type="text/css">
+        <link href="lib/building-blocks/style/toolbars.css" rel="stylesheet" type="text/css">
+
+        <link href="lib/gaia-icons/gaia-icons-embedded.css" rel="stylesheet" type="text/css">
+
         <link href="css/main.css" rel="stylesheet" />
         <link href="css/sidebar.css" rel="stylesheet" />
     </head>
@@ -15,7 +26,6 @@
         <div ng-view></div>
 
         <script src="lib/jquery/dist/jquery.min.js"></script>
-        <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="lib/angular/angular.min.js"></script>
         <script src="lib/angular-route/angular-route.min.js"></script>
         <script src="lib/angular-resource/angular-resource.min.js"></script>

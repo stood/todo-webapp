@@ -69,6 +69,39 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
         }
     );
 
+    $scope.todo = function () {
+        alert('Todo');
+    };
+
+    $scope.query = {
+        'string': '',
+        'contexts': [],
+        'projects': [],
+        'clear': function () {
+            this.string = '';
+            this.contexts = [];
+            this.projects = [];
+        },
+        'toString': function () {
+            var string = this.string;
+
+            this.contexts.forEach(function (enable, index) {
+                if (enable === true) {
+                    string += ' @' + $scope.contexts[index];
+                }
+            });
+
+            this.projects.forEach(function (enable, index) {
+                if (enable === true) {
+                    string += ' +' + $scope.projects[index];
+                }
+            });
+
+            console.log(string);
+            return string;
+        }
+    };
+
     $scope.logout = function () {
         $http.defaults.headers.common.Authorization = '';
         $scope.tasks = null;
@@ -76,7 +109,7 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
         $scope.contexts = null;
         config.clear();
         $location.path('/login');
-    }
+    };
 
     $scope.$on('event:auth-loginRequired', function() {
         $location.path('/login');
@@ -143,14 +176,6 @@ function TasksListController($scope, Alerts, authService, $http, $location, conf
     $scope.alerts = Alerts.all();
 
     $scope.refresh();
-
-    $scope.hideMenu = function () {
-        $('.navbar-collapse').collapse('hide');
-    };
-
-    $scope.toggleSidebar = function () {
-        $('#wrapper').toggleClass('toggled');
-    };
 }
 TasksListController.$inject = ['$scope', 'Alerts', 'authService', '$http', '$location', 'config', '$resource'];
 
